@@ -1,0 +1,46 @@
+#lab11
+
+def main():
+    solution = ['B', 'D', 'A', 'A', 'C', 'A', 'B', 'A', 'C', 'D']
+
+    # Open student_solution.txt for reading
+    with open('student_solution.txt', "r") as input_file:
+        student_solutions = input_file.readlines()
+        student_solutions = [answer.strip("\n") for answer in student_solutions]
+
+    correct_count = 0
+    incorrect_count = 0
+    correct_questions = []
+    incorrect_questions = []
+
+    for i in range(len(student_solutions)):
+        if student_solutions[i] == solution[i]:
+            correct_count += 1
+            correct_questions.append(str(i + 1))
+        else:
+            incorrect_count += 1
+            incorrect_questions.append(str(i + 1))
+
+    # Open test_result.txt for writing
+    with open('test_result.txt', "w") as output_file:
+        if correct_count >= 7:
+            output_file.write("Congratulations!! You have passed the exam\n")
+        else:
+            output_file.write("Sorry, you didn't pass the exam\n")
+
+        output_file.write(
+            "You answered " + str(correct_count) + " questions correctly and " + str(incorrect_count) + " questions incorrectly\n")
+
+        if correct_count > 0:
+            output_file.write("The numbers of the questions you answered correctly are: ")
+            output_file.write(' '.join(correct_questions))
+            output_file.write("\n")
+
+        if incorrect_count > 0:
+            output_file.write("The numbers of the questions you answered incorrectly are: ")
+            output_file.write(' '.join(incorrect_questions))
+            output_file.write("\n")
+
+
+# Call the main function
+main()

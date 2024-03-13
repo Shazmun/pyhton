@@ -1,0 +1,32 @@
+import math
+
+def findMean(x1, x2, x3, x4, x5):
+    return (x1 + x2 + x3 + x4 + x5) / 5.0
+
+def findStdDev(x1, x2, x3, x4, x5):
+    mean = (x1 + x2 + x3 + x4 + x5) / 5
+    stdDev = math.sqrt((math.pow(x1 - mean, 2) +
+                        math.pow(x2 - mean, 2) +
+                        math.pow(x3 - mean, 2) +
+                        math.pow(x4 - mean, 2) +
+                        math.pow(x5 - mean, 2)) / 5.0)
+    return stdDev
+
+option = "Yes"
+
+while option == "Yes":
+    x1 = float(input("Enter the first number: "))
+    x2 = float(input("Enter the second number: "))
+    x3 = float(input("Enter the third number: "))
+    x4 = float(input("Enter the fourth number: "))
+    x5 = float(input("Enter the fifth number: "))
+
+    mean = findMean(x1, x2, x3, x4, x5)
+    deviation = findStdDev(x1, x2, x3, x4, x5)
+
+    print(f"The mean of the numbers is: {mean:.2f}")
+    print(f"The standard deviation of the numbers is: {deviation:.2f}")
+
+    option = input("\nEnter Yes to do another calculation, or No to quit: ")
+
+
