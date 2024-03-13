@@ -1,0 +1,77 @@
+#project01_Q02
+
+# A) Function to convert the time from 24-hour notation to 12-hour notation and returns the new time.
+def convert_to_12_hour_notation(hours, minutes, seconds):
+    period = "AM"
+    if hours >= 12:
+        period = "PM"
+        if hours > 12:
+            hours -= 12
+    if hours == 0:
+        hours = 12
+    return hours, minutes, seconds, period
+
+# B) Function to convert the time from 12-hour notation to 24-hour notation and returns the new time.
+def convert_to_24_hour_notation(hours, minutes, seconds, period):
+    if period.lower() == "pm" and hours != 12:
+        hours += 12 #h
+    elif period.lower() == "am" and hours == 12:
+        hours = 0
+    return hours, minutes, seconds
+
+# C) Function to display the choices.
+def display_choices():
+    print("Enter --")
+    print("1: To convert time from 12-hour notation to 24-hour notation")
+    print("2: To convert time from 24-hour notation to 12-hour notation")
+    print("99: To quit the program")
+
+# D) Function to get the input values and returns them.
+def get_inputs():
+    #Prompt the user to choose an option 
+    option = int(input(""))
+    if option  == 1 or option  == 2: #pick one 
+        hours = int(input("Enter hours: "))
+        minutes = int(input("Enter minutes: "))
+        seconds = int(input("Enter seconds: "))
+        if option  == 2:
+            # Only needed for 12-hour to 24-hour conversion
+            period = ""  
+        else:
+            period = input("Enter AM/PM: ").strip().lower()
+        return option , hours, minutes, seconds, period
+    else:
+        return option, 0, 0, 0, ""
+
+# E) Function to display the results.
+def display_result(hours, minutes, seconds, period):
+    if period:
+        print()
+        print("The time is: ")
+        print(f"{hours:02d}:{minutes:02d}:{seconds:02d} {period.upper()}")
+        print()
+    else:
+        print("The time is: ")
+        print(f"{hours:02d}:{minutes:02d}:{seconds:02d}")
+        print()
+
+# F) Function that calls all other functions and allows the user to select from the menu more than one time.  
+def main():
+    while True:
+        # display the choices 
+        display_choices()
+        option , hours, minutes, seconds, period = get_inputs()
+        
+        if option == 1:
+            hours, minutes, seconds = convert_to_24_hour_notation(hours, minutes, seconds, period)
+            display_result(hours, minutes, seconds, "")
+        elif option == 2:
+            hours, minutes, seconds, period = convert_to_12_hour_notation(hours, minutes, seconds)
+            display_result(hours, minutes, seconds, period)
+        elif option == 99:
+            break
+        else:
+            print("Invalid. Try agian!")
+        
+if __name__ == "__main__":
+    main()

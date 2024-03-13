@@ -1,0 +1,22 @@
+#Assignment06_Q03
+
+# Define a function called eliminateDuplicates that takes a list as input and returns a new list with duplicate values removed.
+def eliminateDuplicates(lst):
+    new_lst = []
+    for num in lst:
+        # Check if the number is not already in the new list.
+        if num not in new_lst:
+            # If not, add the number to the new list.
+            new_lst.append(num)
+    return new_lst
+
+
+def main():
+    lst = input("Enter numbers: ")
+    numbers = lst.split()
+    # Convert the strings to integers and store them in a list.
+    numbers = [int(num) for num in numbers]
+
+    distinct_numbers = eliminateDuplicates(numbers)
+    print("The distinct numbers are:", distinct_numbers)
+main()

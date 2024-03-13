@@ -1,0 +1,26 @@
+#Assignment06_Q08
+
+import matplotlib.pyplot as plt
+
+def main():
+    categories = ['Rent', 'Gas', 'Food', 'Clothing', 'Car Payment', 'Misc']
+    expenses = []
+
+    print("Enter the expenses for last month in the following categories:")
+    
+    for category in categories:
+        # Get the expense amount from the user for each category
+        expense = int(input(f'{category}: '))
+        # Add the expense to the list
+        expenses.append(expense)
+
+    # Create a pie chart
+    plt.figure(figsize=(6, 6))
+    # Create the pie chart
+    plt.pie(expenses, labels=categories,  startangle=140)
+    plt.title('Monthly Expenses')
+    # Display the chart
+    plt.show()
+
+if __name__ == "__main__":
+    main()

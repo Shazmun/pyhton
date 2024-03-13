@@ -1,0 +1,28 @@
+#Assignment06_Q06
+
+# Define a function called sumColumn that calculates the sum of elements in a specific column (j) of a matrix (m).
+def sumColumn(matrix, j):
+    total = 0
+    for row in matrix:
+        total += row[j]
+    return total
+
+def main():
+    rows = 3
+    columns = 4
+    matrix = []
+
+    # Input the matrix
+    for i in range(rows):
+        row = input(f"Enter a {rows}-by-{columns} matrix row {i}: ").split()
+        # Convert the list of strings to a list of floats 
+        matrix.append([float(x) for x in row])
+        
+
+    # Calculate and display the sum for each column
+    for j in range(columns):
+        column_sum = sumColumn(matrix, j)
+        print(f"Sum of the elements at column {j} is {column_sum}")
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,23 @@
+#Assignment06_Q04
+# Define a function called isSorted that checks if a list is sorted in ascending order.
+def isSorted(lst):
+    for i in range(1, len(lst)):
+        # Compare the current element with the previous one.
+        if lst[i] < lst[i - 1]:
+            # If any element is smaller than the previous one, the list is not sorted.
+            return False
+    return True
+
+def main():
+    lst = input("Enter numbers: ").split()
+    # Convert the list of strings to a list of integers.
+    lst = [int(x) for x in lst]
+    
+    # Check if the list is sorted using the isSorted function.
+    if isSorted(lst):
+        print("The list is already sorted")
+    else:
+        print("The list is not sorted")
+
+if __name__ == "__main__":
+    main()

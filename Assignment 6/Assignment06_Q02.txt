@@ -1,0 +1,25 @@
+#Assignment06_Q02
+
+
+import random
+
+# Define a function to shuffle a list and return the shuffled list
+def shuffle(lst):
+    n = len(lst)
+    for i in range(n - 1, 0, -1):
+        # Generate a random index 'j' within the range [0, i]
+        j = random.randint(0, i)  
+        # Swap the elements at index 'i' and 'j'
+        lst[i], lst[j] = lst[j], lst[i]  
+
+# Define the main function that will be executed when the script is run
+def main():
+    numbers = input("Enter numbers: ") 
+    # Split the input string into a list of integers
+    numbers = list(map(int, numbers.split()))  
+    shuffle(numbers)  
+    print(numbers)  
+
+
+if __name__ == "__main__":
+    main()  
